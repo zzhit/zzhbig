@@ -17,7 +17,6 @@ body {
     transform: translate(-50%,-50%);
     width: 400px;
     height: 310px;
-    /* padding: 20px; */
     background-color: #fff;
 }
 .headBox {
@@ -26,13 +25,32 @@ body {
     background: url('/assets/images/login_title.png') no-repeat center;
 }
 /* 登录区域 */
-/* .loginBox {
 
-} */
-/* .layui-form-item {
-    margin: 0 auto;
-} */
+.layui-form-item {
+    position: relative;
+    padding: 3px 25px;
+}
+.layui-form-item i {
+    position: absolute;
+    top: 15px;
+    left: 30px;
+}
+.layui-input {
+    padding-left: 20px;
+}
 /* 注册区域 */
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.link {
+    float: right;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+/* 登录区 */
 .regBox {
     display: none;
 }
