@@ -1,6 +1,8 @@
 $(function () {
     // 登录页面时渲染用户头像及姓名
-    $(document).on('load', getInfo());
+    // $(document).on('load', getInfo());
+
+    getInfo();
     // 退出登录
     backOut();
 
@@ -17,21 +19,29 @@ var getInfo = function () {
             if (res.status !== 0) {
                 return
             }
-            // 头像&名字
-            var uname = res.data.nickname || res.data.username;
-            if (res.data.user_pic === null) {
-                $('.account img').hide();
-                $('.avatar').html(uname[0].toUpperCase()).show();
-                $('.welcome').html('欢迎&nbsp;&nbsp;' + uname);
-
-            } else {
-                $('.account img').prop('src', res.data.user_pic).show();
-                $('.avatar').hide();
-                $('.welcome').html('欢迎&nbsp;&nbsp;' + uname);
-            }
+            rander(res);
         }
     })
 
+}
+
+// 渲染信息
+function rander(res) {
+    // 头像&名字
+    var uname = res.data.nickname || res.data.username;
+    if (!res.data.user_pic) {
+        $('.account img').hide();
+        $('.avatar').html(uname[0].toUpperCase()).show();
+        $('.welcome').html('欢迎&nbsp;&nbsp;' + uname);
+        console.log('执行');
+
+    } else {
+        $('.account img').prop('src', res.data.user_pic).show();
+        $('.avatar').hide();
+        $('.welcome').html('欢迎&nbsp;&nbsp;' + uname);
+        console.log('执行');
+
+    }
 }
 
 // 退出登录功能
@@ -50,3 +60,4 @@ function backOut() {
         });
     })
 }
+
